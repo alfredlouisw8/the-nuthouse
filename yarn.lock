@@ -259,6 +259,14 @@
     "@sanity/client" "^6.4.9"
     "@types/react" "^18.0.25"
 
+"@sanity/types@^3.16.7":
+  version "3.16.7"
+  resolved "https://registry.yarnpkg.com/@sanity/types/-/types-3.16.7.tgz#5ad96ee7ae152ad655014d897b6efcf1cf185943"
+  integrity sha512-IQBrZiIE3/SePLmS8gl5elOZh0mtzM6QteG07KN+X23qkw7JTAvJC+/u5YnwAm+yyoWBzzBDPAlHpP4aXNricA==
+  dependencies:
+    "@sanity/client" "^6.4.9"
+    "@types/react" "^18.0.25"
+
 "@sanity/webhook@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@sanity/webhook/-/webhook-3.0.1.tgz#ed70a185940ec5775770cfb43503ecaee328e49e"
