@@ -17,6 +17,16 @@ export default defineType({
       to: {type: 'category'},
     }),
     defineField({
+      name: 'info',
+      title: 'Additional info',
+      type: 'string',
+    }),
+    defineField({
+      name: 'brand',
+      title: 'Brand',
+      type: 'string',
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',

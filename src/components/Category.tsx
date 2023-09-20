@@ -9,11 +9,12 @@ interface Props {
 export default function Category({ category: { image, title } }: Props) {
 	return (
 		<div className="flex flex-col gap-5">
-			<div className="w-28 h-28 sm:w-48 sm:h-48 overflow-hidden relative rounded-full">
+			<div className="w-28 h-28 sm:w-48 sm:h-48 overflow-hidden relative rounded-full border p-2 border-brown">
 				<Image
 					src={urlFor(image).url()}
 					alt={title}
-					fill
+					width={500}
+					height={500}
 					style={{ objectFit: "cover" }}
 				/>
 			</div>

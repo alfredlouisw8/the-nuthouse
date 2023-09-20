@@ -3,7 +3,7 @@ import { CategoryType, ProductType } from "@/types";
 import { PRODUCTS_PER_PAGE } from "@/utils/variables";
 
 export const getCategories = (): Promise<CategoryType[]> => {
-	const categoriesQuery = `*[_type == "category"]{
+	const categoriesQuery = `*[_type == "category"] | order(order asc) {
     _id,
     title,
     image
@@ -27,6 +27,8 @@ export const getProducts = async (
     _id,
       title,
       image,
+			info,
+			brand,
       shopee,
       tokopedia,
       blibli
@@ -36,14 +38,7 @@ export const getProducts = async (
 		title ?? ""
 	}*"  && category._ref in *[_type=="category" ${
 		category !== "All" ? `&& title=="${category}"` : ""
-	}]._id] | order(_id) {
-    _id,
-      title,
-      image,
-      shopee,
-      tokopedia,
-      blibli
-  })`;
+	}]._id] | order(_id))`;
 
 	const products = await sanityClient.fetch(productsQuery);
 	const productsCount = await sanityClient.fetch(productsCountQuery);

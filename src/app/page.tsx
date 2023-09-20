@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Products from "@/components/Products";
 import Search from "@/components/Search";
 import { getCategories, getProducts } from "@/queries";
-import { PRODUCTS_PER_PAGE } from "@/utils/variables";
 
 export default async function Home() {
 	const categories = await getCategories();

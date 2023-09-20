@@ -7,7 +7,7 @@ interface Props {
 
 export default function Products({ categories }: Props) {
 	return (
-		<section className="flex flex-col gap-4">
+		<section className="flex flex-col gap-4 -mt-[6px]">
 			<div className="border-green/50 sm:rounded-b-3xl pb-3 border-b">
 				<div className="border-green/75 sm:rounded-b-3xl pb-3 border-b">
 					<div className="bg-green sm:rounded-b-3xl py-10 relative">
@@ -17,11 +17,13 @@ export default function Products({ categories }: Props) {
 					</div>
 				</div>
 			</div>
-			<div className="p-10 bg-[url('/img/products-bg.png')]">
-				<div className="flex items-center gap-6 sm:gap-10 overflow-auto sm:max-w-[1600px] sm:flex-wrap sm:mx-auto sm:justify-center">
+			<div className="py-10 bg-[url('/img/products-bg.png')]">
+				<div className="flex items-center gap-6 sm:gap-10 overflow-auto sm:max-w-[1600px] sm:flex-wrap sm:mx-auto sm:justify-center pb-3">
+					<div></div>
 					{categories.map((category) => (
 						<Category key={category._id} category={category} />
 					))}
+					<div></div>
 				</div>
 			</div>
 		</section>

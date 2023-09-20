@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function Product({
-	product: { title, image, shopee, tokopedia, blibli },
+	product: { title, image, shopee, tokopedia, blibli, info },
 }: Props) {
 	return (
 		<div className="flex flex-col gap-3">
@@ -20,6 +20,10 @@ export default function Product({
 				/>
 			</div>
 			<h5 className="sm:text-2xl text-white">{title}</h5>
+			<div className="bg-white p-1 max-w-fit">
+				<h5 className="text-brown sm:text-base text-xs">{info}</h5>
+			</div>
+
 			<div className="flex items-center gap-3">
 				<a href={shopee} target="_blank">
 					<Image src="/img/shopee.jpg" alt={shopee} width={25} height={25} />

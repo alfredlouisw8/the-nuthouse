@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Dropdown from "./Dropdown";
 import Product from "./Product";
 import { CategoryType, ProductType } from "@/types";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
 import { useProducts } from "@/hooks";
@@ -60,11 +60,21 @@ export default function Search({
 					</Button>
 				</div>
 
+				<p
+					className={`sm:text-2xl text-white ${
+						selected != "Branded Products" && "invisible"
+					}`}
+				>
+					{products.map((product) => product.brand).join(" | ")}
+				</p>
+
 				{products.length > 0 ? (
 					<div className="grid grid-cols-3 sm:grid-cols-4 gap-5 sm:gap-10">
 						{products.map((product) => (
 							<>
-								<Product key={product._id} product={product} />
+								{[...Array(12)].map((item, i) => (
+									<Product key={product._id + i} product={product} />
+								))}
 							</>
 						))}
 					</div>
@@ -73,14 +83,6 @@ export default function Search({
 						No products
 					</p>
 				)}
-
-				<Image
-					src="/img/white-logo.png"
-					alt="The Nuthouse"
-					width={200}
-					height={200}
-					className="mx-auto"
-				/>
 
 				{products.length > 0 && (
 					<div className="flex items-center gap-3 justify-center text-white sm:text-2xl">

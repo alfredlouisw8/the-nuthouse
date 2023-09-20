@@ -37,7 +37,7 @@ export default function Dropdown({ categories, selected, setSelected }: Props) {
 							<Listbox.Option
 								key={_id}
 								className={({ active }) =>
-									`relative cursor-default select-none py-2 pl-10 pr-4 ${
+									`relative select-none cursor-pointer py-2 pl-10 pr-4 ${
 										active ? "bg-amber-100 text-amber-900" : "text-gray-900"
 									}`
 								}

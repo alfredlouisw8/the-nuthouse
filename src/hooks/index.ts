@@ -1,6 +1,6 @@
 import { getProducts } from "@/queries";
 import { ProductType } from "@/types";
-import { RefObject, useState } from "react";
+import { RefObject, useCallback, useEffect, useState } from "react";
 
 export const useProducts = (
 	initialProducts: ProductType[],
@@ -17,7 +17,7 @@ export const useProducts = (
 	const [pageNumber, setPageNumber] = useState(0);
 	const [title, setTitle] = useState("");
 
-	const searchProducts = async () => {
+	const searchProducts = useCallback(async () => {
 		setIsLoading(true);
 		const titleQuery = titleRef.current?.value ?? "";
 
@@ -32,7 +32,7 @@ export const useProducts = (
 		setIsLoading(false);
 		setPageNumber(0);
 		setLastIds([fetchedProducts.slice(-1)[0]?._id]);
-	};
+	}, [selected, titleRef]);
 
 	const fetchNextPage = async () => {
 		setIsLoading(true);
@@ -45,9 +45,8 @@ export const useProducts = (
 
 		setPageNumber((prev) => prev + 1);
 		if (!lastIds[pageNumber + 1]) {
-			setLastIds((prev) => [...prev, fetchedProducts.slice(-1)[0]._id]);
+			setLastIds((prev) => [...prev, fetchedProducts.slice(-1)[0]?._id]);
 		}
-
 		setProducts(fetchedProducts);
 		setIsLoading(false);
 	};
@@ -65,6 +64,10 @@ export const useProducts = (
 		setProducts(fetchedProducts);
 		setIsLoading(false);
 	};
+
+	useEffect(() => {
+		searchProducts();
+	}, [selected, searchProducts]);
 
 	return [
 		products,
