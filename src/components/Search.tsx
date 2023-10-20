@@ -71,11 +71,7 @@ export default function Search({
 				{products.length > 0 ? (
 					<div className="grid grid-cols-3 sm:grid-cols-4 gap-y-10 lg:gap-x-36 md:gap-x-16 gap-x-4">
 						{products.map((product) => (
-							<>
-								{[...Array(12)].map((item, i) => (
-									<Product key={product._id + i} product={product} />
-								))}
-							</>
+							<Product key={product._id} product={product} />
 						))}
 					</div>
 				) : (
