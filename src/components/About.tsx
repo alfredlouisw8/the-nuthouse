@@ -13,9 +13,9 @@ export default function About() {
 		arrows: false,
 	};
 	return (
-		<section className="relative overflow-x-hidden">
+		<section className="relative overflow-x-hidden" id="about">
 			<Slider {...settings}>
-				<div className="w-full bg-[url('/img/about-bg.png')] h-[700px] sm:h-[900px] bg-no-repeat bg-cover bg-bottom"></div>
+				<div className="w-full bg-[url('/img/about-bg.jpg')] h-[700px] sm:h-[900px] bg-no-repeat bg-cover bg-bottom"></div>
 				<div className="w-full bg-[url('/img/about-bg-2.png')] h-[700px] sm:h-[900px] bg-no-repeat bg-cover bg-bottom"></div>
 				<div className="w-full bg-[url('/img/about-bg-3.png')] h-[700px] sm:h-[900px] bg-no-repeat bg-cover bg-bottom"></div>
 			</Slider>

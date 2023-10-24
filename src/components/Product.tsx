@@ -20,7 +20,7 @@ export default function Product({
 				<h5 className="text-brown sm:text-base text-xs">{info}</h5>
 			</div>
 
-			<div className="sm:flex items-center gap-3 hidden">
+			<div className="flex items-center gap-3">
 				{shopee && (
 					<a href={shopee} target="_blank">
 						<Image src="/img/shopee.png" alt={shopee} width={25} height={25} />
