@@ -22,3 +22,12 @@ export type ProductType = {
 	tokopedia: string;
 	blibli: string;
 };
+
+export type ThumbnailType = {
+	_id: string;
+	title: string;
+	description: string;
+	image1: ImageSource;
+	image2: ImageSource;
+	image3: ImageSource;
+};

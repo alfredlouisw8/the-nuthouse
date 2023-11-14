@@ -1,3 +1,4 @@
+import { BLIBLI_URL, SHOPEE_URL, TOKOPEDIA_URL } from "@/utils/variables";
 import Image from "next/image";
 
 export default function Footer() {
@@ -55,36 +56,33 @@ export default function Footer() {
 								/>
 							</div>
 						</a>
-						<a href="https://shopee.co.id/nuthouse" target="_blank">
+						<a href={SHOPEE_URL} target="_blank">
 							<div className="md:w-6 md:h-6 w-3 h-3 relative">
 								<Image
 									src="/img/shopee-white.png"
 									fill
 									style={{ objectFit: "contain" }}
-									alt="https://shopee.co.id/nuthouse"
+									alt={SHOPEE_URL}
 								/>
 							</div>
 						</a>
-						<a
-							href="https://www.blibli.com/merchant/the-nut-house-official-store/THN-70062"
-							target="_blank"
-						>
+						<a href={BLIBLI_URL} target="_blank">
 							<div className="md:w-6 md:h-6 w-3 h-3 relative">
 								<Image
 									src="/img/blibli-white.png"
 									fill
 									style={{ objectFit: "contain" }}
-									alt="https://www.blibli.com/merchant/the-nut-house-official-store/THN-70062"
+									alt={BLIBLI_URL}
 								/>
 							</div>
 						</a>
-						<a href="https://www.tokopedia.com/nuthouse" target="_blank">
+						<a href={TOKOPEDIA_URL} target="_blank">
 							<div className="md:w-20 md:h-6 w-10 h-3 relative">
 								<Image
 									src="/img/tokopedia-white.png"
 									fill
 									style={{ objectFit: "contain" }}
-									alt="https://www.tokopedia.com/nuthouse"
+									alt={TOKOPEDIA_URL}
 								/>
 							</div>
 						</a>

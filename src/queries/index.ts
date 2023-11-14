@@ -1,5 +1,5 @@
 import { sanityClient } from "@/lib/sanity";
-import { CategoryType, ProductType } from "@/types";
+import { CategoryType, ProductType, ThumbnailType } from "@/types";
 import { PRODUCTS_PER_PAGE } from "@/utils/variables";
 
 export const getCategories = (): Promise<CategoryType[]> => {
@@ -10,6 +10,18 @@ export const getCategories = (): Promise<CategoryType[]> => {
   }`;
 
 	return sanityClient.fetch(categoriesQuery);
+};
+
+export const getThumbnail = (): Promise<ThumbnailType> => {
+	const thumbnailQuery = `*[_type == "thumbnail"][0] {
+    title,
+		description,
+    image1,
+		image2,
+		image3
+  }`;
+
+	return sanityClient.fetch(thumbnailQuery);
 };
 
 export const getProducts = async (
