@@ -26,7 +26,9 @@ export default function Footer() {
 								/>
 							</div>
 
-							<h6 className="md:text-2xl text-xs text-white">Kota Surabaya</h6>
+							<h6 className="md:text-2xl text-[0.5rem] text-white">
+								Kota Surabaya
+							</h6>
 						</div>
 						<a
 							className="flex items-center md:gap-4 gap-2"
@@ -42,7 +44,9 @@ export default function Footer() {
 								/>
 							</div>
 
-							<p className="md:text-2xl text-xs text-white">+62 816-500-508</p>
+							<p className="md:text-2xl text-[0.5rem] text-white">
+								+62 816-500-508
+							</p>
 						</a>
 					</div>
 					<div className="flex items-center gap-5">

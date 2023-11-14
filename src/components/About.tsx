@@ -28,7 +28,7 @@ export default function About({ thumbnail }: Props) {
 						src={urlFor(thumbnail.image1).url()}
 						fill
 						alt="Image1"
-						objectFit="cover"
+						style={{ objectFit: "cover" }}
 					/>
 				</div>
 				<div className={`w-full h-[700px] sm:h-[900px] relative`}>
@@ -36,7 +36,7 @@ export default function About({ thumbnail }: Props) {
 						src={urlFor(thumbnail.image2).url()}
 						fill
 						alt="Image2"
-						objectFit="cover"
+						style={{ objectFit: "cover" }}
 					/>
 				</div>
 				<div className={`w-full h-[700px] sm:h-[900px] relative`}>
@@ -44,7 +44,7 @@ export default function About({ thumbnail }: Props) {
 						src={urlFor(thumbnail.image3).url()}
 						fill
 						alt="Image3"
-						objectFit="cover"
+						style={{ objectFit: "cover" }}
 					/>
 				</div>
 			</Slider>

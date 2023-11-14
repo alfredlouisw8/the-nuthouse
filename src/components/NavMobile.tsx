@@ -35,7 +35,7 @@ export const NavMobile = () => {
 					/>
 				</div>
 				{isOpen && (
-					<div className="fixed bg-brown/60 w-screen h-screen z-20 top-0">
+					<div className="fixed bg-black/60 w-screen h-screen z-20 top-0">
 						<div className="flex flex-col gap-10 items-end relative top-28 pr-8">
 							<a
 								href="#about"
