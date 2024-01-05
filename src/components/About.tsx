@@ -48,14 +48,18 @@ export default function About({ thumbnail }: Props) {
 					/>
 				</div>
 			</Slider>
-			<div className="absolute bottom-60 sm:bottom-24 left-16">
+			<div className="absolute top-24 md:top-auto md:bottom-24 left-1/2 translate-x-[-50%] md:translate-x-0 z-20 w-4/5">
 				<h1 className="mb-5 text-xl sm:text-4xl font-bold text-white">
 					{thumbnail.title}
 				</h1>
-				<p className="text-white w-56 sm:w-[450px] sm:text-2xl">
+				<p className="text-white sm:w-[450px] sm:text-xl mb-5">
 					{thumbnail.description}
 				</p>
+				<a href="#search" className="rounded-full py-3 px-6 bg-white">
+					Search
+				</a>
 			</div>
+			<div className="w-full h-[calc(100%-10px)] absolute bg-black/50 z-10 top-0"></div>
 		</section>
 	);
 }

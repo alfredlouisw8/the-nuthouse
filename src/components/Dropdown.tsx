@@ -14,11 +14,9 @@ interface Props {
 export default function Dropdown({ categories, selected, setSelected }: Props) {
 	return (
 		<Listbox value={selected} onChange={setSelected}>
-			<div className="relative">
-				<Listbox.Button className="relative w-full min-w-[150px] cursor-default rounded bg-white px-3 py-2 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300">
-					<span className="block truncate text-brown text-xs sm:text-2xl">
-						{selected}
-					</span>
+			<div className="relative w-full border rounded border-gray">
+				<Listbox.Button className="relative w-full cursor-default rounded bg-white px-3 py-2 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300">
+					<span className="block truncate">{selected}</span>
 					<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 						<ChevronDownIcon
 							className="h-5 w-5 text-gray-400"
@@ -46,7 +44,7 @@ export default function Dropdown({ categories, selected, setSelected }: Props) {
 								{({ selected }) => (
 									<>
 										<span
-											className={`block text-brown text-xs sm:text-2xl truncate ${
+											className={`block truncate ${
 												selected ? "font-medium" : "font-normal"
 											}`}
 										>

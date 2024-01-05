@@ -17,6 +17,7 @@ export type ProductType = {
 	title: string;
 	image: ImageSource;
 	brand: string;
+	price: number;
 	info: string;
 	shopee: string;
 	tokopedia: string;
@@ -31,3 +32,11 @@ export type ThumbnailType = {
 	image2: ImageSource;
 	image3: ImageSource;
 };
+
+export type CategoryTypeWithEmptyArray = (
+	| CategoryType
+	| {
+			_id: string;
+			title: string;
+	  }
+)[];

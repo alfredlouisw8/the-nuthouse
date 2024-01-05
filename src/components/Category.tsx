@@ -1,6 +1,7 @@
 import { urlFor } from "@/lib/sanity";
 import { CategoryType } from "@/types";
 import Image from "next/image";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 interface Props {
 	category: CategoryType;
@@ -8,17 +9,22 @@ interface Props {
 
 export default function Category({ category: { image, title } }: Props) {
 	return (
-		<div className="flex flex-col gap-5">
-			<div className="w-28 h-28 sm:w-48 sm:h-48 overflow-hidden relative rounded-full border p-2 border-brown">
-				<Image
-					src={urlFor(image).url()}
-					alt={title}
-					width={500}
-					height={500}
-					style={{ objectFit: "cover" }}
-				/>
-			</div>
-			<h1 className="text-center text-brown sm:text-2xl">{title}</h1>
+		<div className="flex w-full flex-col h-full items-center">
+			<Card className="max-w-[200px] border-0 drop-shadow-lg flex-1 w-full">
+				<CardHeader className="p-0">
+					<div className="w-40 h-40 md:w-full md:h-auto md:aspect-square relative">
+						<Image
+							src={urlFor(image).url()}
+							alt={title}
+							fill
+							style={{ objectFit: "cover" }}
+						/>
+					</div>
+				</CardHeader>
+				<CardContent className="py-6 px-3 flex-1 h-20">
+					<p className="font-bold">{title}</p>
+				</CardContent>
+			</Card>
 		</div>
 	);
 }

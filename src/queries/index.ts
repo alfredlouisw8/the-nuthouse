@@ -1,6 +1,6 @@
 import { sanityClient } from "@/lib/sanity";
+import { PRODUCTS_PER_PAGE } from "@/lib/utils";
 import { CategoryType, ProductType, ThumbnailType } from "@/types";
-import { PRODUCTS_PER_PAGE } from "@/utils/variables";
 
 export const getCategories = (): Promise<CategoryType[]> => {
 	const categoriesQuery = `*[_type == "category"] | order(order asc) {

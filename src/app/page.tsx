@@ -2,7 +2,7 @@ import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { NavMobile } from "@/components/NavMobile";
 import Navbar from "@/components/Navbar";
-import Products from "@/components/Products";
+import CategoryList from "@/components/CategoryList";
 import Search from "@/components/Search";
 import { getCategories, getProducts, getThumbnail } from "@/queries";
 
@@ -16,7 +16,7 @@ export default async function Home() {
 			<Navbar />
 			<NavMobile />
 			<About thumbnail={thumbnail} />
-			<Products categories={categories} />
+			<CategoryList categories={categories} />
 			<Search
 				categories={categories}
 				products={products}

@@ -6,7 +6,7 @@ interface Props {
 	className?: string;
 }
 
-export default function Button({ children, onClick, className }: Props) {
+export default function FormButton({ children, onClick, className }: Props) {
 	const [enabled, setEnabled] = useState(true);
 
 	const handleClick = async () => {

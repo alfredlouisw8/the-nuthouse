@@ -2,14 +2,18 @@ import Image from "next/image";
 
 export default function Navbar() {
 	return (
-		<header className="absolute top-4 items-center z-10 w-full hidden md:flex">
-			<div className="w-[20vw] relative aspect-[2/1]">
-				<Image alt="logo" src="/img/logo-nuthouse.png" fill />
+		<header className="items-center z-10 w-full hidden md:flex bg-green px-10 py-3">
+			<div className="relative w-40 h-20">
+				<Image
+					alt="logo"
+					src="/img/white-logo.png"
+					fill
+					style={{ objectFit: "contain" }}
+				/>
 			</div>
 
-			<div className="bg-brown/60 flex items-center justify-end gap-20 flex-1 h-[5vw] xl:text-3xl lg:text-2xl md:text-xl pr-20 text-white">
-				<a href="#about">ABOUT US</a>
-				<a href="#product">PRODUCTS</a>
+			<div className="flex items-center justify-end gap-20 flex-1 h-16 xl:text-xl md:text-xl text-white">
+				<a href="#product">CATEGORY</a>
 				<a href="https://wa.me/62816500508">CONTACT US</a>
 			</div>
 		</header>

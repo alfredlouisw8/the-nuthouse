@@ -1,45 +1,71 @@
 import { urlFor } from "@/lib/sanity";
 import { ProductType } from "@/types";
-import { BLIBLI_URL, SHOPEE_URL, TOKOPEDIA_URL } from "@/utils/variables";
 import Image from "next/image";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+	BLIBLI_URL,
+	SHOPEE_URL,
+	TOKOPEDIA_URL,
+	numberWithCommas,
+} from "@/lib/utils";
 
 interface Props {
 	product: ProductType;
 }
 
 export default function Product({
-	product: { title, image, shopee, tokopedia, blibli, info },
+	product: { title, image, shopee, tokopedia, blibli, info, price },
 }: Props) {
 	const imageUrl = image ? urlFor(image).url() : "/img/no-image.jpg";
 	const shopeeUrl = shopee || SHOPEE_URL;
 	const tokopediaUrl = tokopedia || TOKOPEDIA_URL;
 	const blibliUrl = blibli || BLIBLI_URL;
+	const priceText = price ? numberWithCommas(price) : "-";
 	return (
-		<div className="flex flex-col gap-3">
-			<div className="w-full aspect-square overflow-hidden relative rounded-lg">
-				<Image src={imageUrl} alt={title} fill style={{ objectFit: "cover" }} />
-			</div>
-			<h5 className="sm:text-2xl text-white flex-1">{title}</h5>
-			<div className="bg-white p-1 max-w-fit hidden sm:block">
-				<h5 className="text-brown sm:text-base text-xs">{info}</h5>
-			</div>
-
-			<div className="flex items-center gap-3">
-				<a href={shopeeUrl} target="_blank">
-					<Image src="/img/shopee.png" alt={shopeeUrl} width={25} height={25} />
-				</a>
-				<a href={tokopediaUrl} target="_blank">
-					<Image
-						src="/img/tokopedia.png"
-						alt={tokopediaUrl}
-						width={25}
-						height={25}
-					/>
-				</a>
-				<a href={blibliUrl} target="_blank">
-					<Image src="/img/blibli.png" alt={blibliUrl} width={25} height={25} />
-				</a>
-			</div>
+		<div className="flex w-full flex-col h-full items-center">
+			<Card className="max-w-[200px] border-0 drop-shadow-lg flex-1 w-full">
+				<CardHeader className="p-0">
+					<div className="w-full h-auto aspect-square relative rounded overflow-hidden">
+						<Image
+							src={imageUrl}
+							alt={title}
+							fill
+							style={{ objectFit: "cover" }}
+						/>
+					</div>
+				</CardHeader>
+				<CardContent className="py-6 px-3 flex-1 gap-3 flex flex-col">
+					<p className="line-clamp-2 h-12">{title}</p>
+					<p className="font-bold">IDR {priceText}</p>
+					<p className="text-xs">{info}</p>
+					<div className="flex items-center gap-3">
+						<a href={shopeeUrl} target="_blank">
+							<Image
+								src="/img/shopee.png"
+								alt={shopeeUrl}
+								width={25}
+								height={25}
+							/>
+						</a>
+						<a href={tokopediaUrl} target="_blank">
+							<Image
+								src="/img/tokopedia.png"
+								alt={tokopediaUrl}
+								width={25}
+								height={25}
+							/>
+						</a>
+						<a href={blibliUrl} target="_blank">
+							<Image
+								src="/img/blibli.png"
+								alt={blibliUrl}
+								width={25}
+								height={25}
+							/>
+						</a>
+					</div>
+				</CardContent>
+			</Card>
 		</div>
 	);
 }
