@@ -27,15 +27,15 @@ export const getThumbnail = (): Promise<ThumbnailType> => {
 export const getProducts = async (
 	category: string,
 	title: string,
-	lastId?: string
+	lastTitle?: string
 ): Promise<[ProductType[], number]> => {
 	const productsQuery = `*[_type == "product" && title match "*${
 		title ?? ""
 	}*" ${
-		lastId ? `&& _id > "${lastId}"` : ""
+		lastTitle ? `&& title > "${lastTitle}"` : ""
 	} && category._ref in *[_type=="category" ${
 		category !== "All" ? `&& title=="${category}"` : ""
-	}]._id] | order(_id) [0...${PRODUCTS_PER_PAGE}]{
+	}]._id] | order(title) [0...${PRODUCTS_PER_PAGE}]{
     _id,
       title,
       image,

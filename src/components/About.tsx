@@ -10,6 +10,8 @@ type Props = {
 	thumbnail: ThumbnailType;
 };
 
+const aboutImages = [];
+
 export default function About({ thumbnail }: Props) {
 	const settings = {
 		speed: 500,
@@ -20,33 +22,25 @@ export default function About({ thumbnail }: Props) {
 		pauseOnHover: false,
 		arrows: false,
 	};
+
+	const thumbnailImages = [
+		urlFor(thumbnail.image1).url(),
+		urlFor(thumbnail.image2).url(),
+		urlFor(thumbnail.image3).url(),
+	];
 	return (
 		<section className="relative overflow-x-hidden" id="about">
 			<Slider {...settings}>
-				<div className={`w-full h-[700px] sm:h-[900px] relative`}>
-					<Image
-						src={urlFor(thumbnail.image1).url()}
-						fill
-						alt="Image1"
-						style={{ objectFit: "cover" }}
-					/>
-				</div>
-				<div className={`w-full h-[700px] sm:h-[900px] relative`}>
-					<Image
-						src={urlFor(thumbnail.image2).url()}
-						fill
-						alt="Image2"
-						style={{ objectFit: "cover" }}
-					/>
-				</div>
-				<div className={`w-full h-[700px] sm:h-[900px] relative`}>
-					<Image
-						src={urlFor(thumbnail.image3).url()}
-						fill
-						alt="Image3"
-						style={{ objectFit: "cover" }}
-					/>
-				</div>
+				{thumbnailImages.map((image, i) => (
+					<div className={`w-full h-screen relative`} key={i}>
+						<Image
+							src={image}
+							fill
+							alt="Image1"
+							style={{ objectFit: "cover" }}
+						/>
+					</div>
+				))}
 			</Slider>
 			<div className="absolute top-24 md:top-auto md:bottom-24 left-1/2 translate-x-[-50%] md:translate-x-0 z-20 w-4/5">
 				<h1 className="mb-5 text-xl sm:text-4xl font-bold text-white">

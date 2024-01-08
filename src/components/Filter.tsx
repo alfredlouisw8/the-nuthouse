@@ -22,29 +22,32 @@ export default function Filter({
 	return (
 		<>
 			<p className="text-xl text-dark-gray">Filter</p>
-			<div className="flex flex-col gap-3">
-				<div className="flex items-center gap-3">
-					<input
-						type="text"
-						className="border flex-1 px-3 py-2 rounded border-gray md:w-[50px]"
-						ref={titleRef}
-						placeholder="Search..."
-					/>
-					<FormButton
-						className="p-2 bg-white rounded h-[42px] w-[42px] flex items-center justify-center border border-gray"
-						onClick={searchProducts}
-					>
-						<MagnifyingGlassIcon width={20} />
-					</FormButton>
+			<form onSubmit={searchProducts}>
+				<div className="flex flex-col gap-3">
+					<div className="flex items-center gap-3">
+						<input
+							type="text"
+							className="border flex-1 px-3 py-2 rounded border-gray md:w-[50px]"
+							ref={titleRef}
+							placeholder="Search..."
+						/>
+						<FormButton
+							className="p-2 bg-white rounded h-[42px] w-[42px] flex items-center justify-center border border-gray"
+							onClick={searchProducts}
+							type="submit"
+						>
+							<MagnifyingGlassIcon width={20} />
+						</FormButton>
+					</div>
+					<div className="flex items-center gap-4">
+						<Dropdown
+							categories={categoriesWithEmptyState}
+							selected={selected}
+							setSelected={setSelected}
+						/>
+					</div>
 				</div>
-				<div className="flex items-center gap-4">
-					<Dropdown
-						categories={categoriesWithEmptyState}
-						selected={selected}
-						setSelected={setSelected}
-					/>
-				</div>
-			</div>
+			</form>
 		</>
 	);
 }

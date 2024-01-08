@@ -1,6 +1,7 @@
 import { ProductType } from "@/types";
 import FormButton from "./FormButton";
 import Product from "./Product";
+import { PRODUCTS_PER_PAGE } from "@/lib/utils";
 
 interface Props {
 	fetchPrevPage: () => Promise<void>;
@@ -28,7 +29,7 @@ export default function ProductList({
 			>
 				{products.map((product) => product.brand).join(" • ")}
 			</p>
-			<div className="flex flex-col gap-5">
+			<div className="flex flex-col gap-5 min-h-[400px]">
 				{products.length > 0 ? (
 					<div className="grid grid-cols-2 xl:grid-cols-4 sm:grid-cols-3 gap-5">
 						{products.map((product) => (

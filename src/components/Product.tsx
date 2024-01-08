@@ -25,7 +25,7 @@ export default function Product({
 		<div className="flex w-full flex-col h-full items-center">
 			<Card className="max-w-[200px] border-0 drop-shadow-lg flex-1 w-full">
 				<CardHeader className="p-0">
-					<div className="w-full h-auto aspect-square relative rounded overflow-hidden">
+					<div className="w-full h-auto aspect-square relative overflow-hidden rounded-lg">
 						<Image
 							src={imageUrl}
 							alt={title}
@@ -43,15 +43,15 @@ export default function Product({
 							<Image
 								src="/img/shopee.png"
 								alt={shopeeUrl}
-								width={25}
 								height={25}
+								width={23}
 							/>
 						</a>
 						<a href={tokopediaUrl} target="_blank">
 							<Image
 								src="/img/tokopedia.png"
 								alt={tokopediaUrl}
-								width={25}
+								width={27}
 								height={25}
 							/>
 						</a>
@@ -59,7 +59,7 @@ export default function Product({
 							<Image
 								src="/img/blibli.png"
 								alt={blibliUrl}
-								width={25}
+								width={17}
 								height={25}
 							/>
 						</a>

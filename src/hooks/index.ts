@@ -1,37 +1,41 @@
+import { PRODUCTS_PER_PAGE } from "@/lib/utils";
 import { getProducts } from "@/queries";
 import { ProductType } from "@/types";
 import { RefObject, useCallback, useEffect, useState } from "react";
 
 export const useProducts = (
 	initialProducts: ProductType[],
-	initialTotalPages: number,
+	initialTotalProducts: number,
 	selected: string,
 	titleRef: RefObject<HTMLInputElement>
 ) => {
 	const [products, setProducts] = useState<ProductType[]>(initialProducts);
 	const [isLoading, setIsLoading] = useState(false);
-	const [totalPages, setTotalPages] = useState(initialTotalPages);
-	const [lastIds, setLastIds] = useState<string[]>([
+	const [totalProducts, setTotalProducts] = useState(initialTotalProducts);
+	const [lastTitles, setLastTitles] = useState<string[]>([
 		initialProducts.slice(-1)[0]._id,
 	]);
 	const [pageNumber, setPageNumber] = useState(0);
 	const [title, setTitle] = useState("");
 
+	const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE);
+
 	const searchProducts = useCallback(async () => {
 		setIsLoading(true);
+
 		const titleQuery = titleRef.current?.value ?? "";
 
-		const [fetchedProducts, fetchedTotalPage] = await getProducts(
+		const [fetchedProducts, fetchedTotalProducts] = await getProducts(
 			selected,
 			titleQuery
 		);
 
 		setTitle(titleQuery);
 		setProducts(fetchedProducts);
-		setTotalPages(fetchedTotalPage);
+		setTotalProducts(fetchedTotalProducts);
 		setIsLoading(false);
 		setPageNumber(0);
-		setLastIds([fetchedProducts.slice(-1)[0]?._id]);
+		setLastTitles([fetchedProducts.slice(-1)[0]?.title]);
 	}, [selected, titleRef]);
 
 	const fetchNextPage = async () => {
@@ -40,12 +44,12 @@ export const useProducts = (
 		const [fetchedProducts] = await getProducts(
 			selected,
 			title,
-			lastIds[pageNumber]
+			lastTitles[pageNumber]
 		);
 
 		setPageNumber((prev) => prev + 1);
-		if (!lastIds[pageNumber + 1]) {
-			setLastIds((prev) => [...prev, fetchedProducts.slice(-1)[0]?._id]);
+		if (!lastTitles[pageNumber + 1]) {
+			setLastTitles((prev) => [...prev, fetchedProducts.slice(-1)[0]?.title]);
 		}
 		setProducts(fetchedProducts);
 		setIsLoading(false);
@@ -57,7 +61,7 @@ export const useProducts = (
 		const [fetchedProducts] = await getProducts(
 			selected,
 			title,
-			lastIds[pageNumber - 2]
+			lastTitles[pageNumber - 2]
 		);
 
 		setPageNumber((prev) => prev - 1);

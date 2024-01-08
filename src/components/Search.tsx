@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Dropdown from "./Dropdown";
 import Product from "./Product";
 import { CategoryType, CategoryTypeWithEmptyArray, ProductType } from "@/types";
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useProducts } from "@/hooks";
 import FormButton from "./FormButton";
@@ -15,19 +15,23 @@ import ProductList from "./ProductList";
 interface Props {
 	categories: CategoryType[];
 	products: ProductType[];
-	totalPages: number;
+	totalProducts: number;
+	selected: string;
+	setSelected: Dispatch<SetStateAction<string>>;
 }
 
 export default function Search({
 	categories,
 	products: initialProducts,
-	totalPages: initialTotalPages,
+	totalProducts: initialTotalProducts,
+	selected,
+	setSelected,
 }: Props) {
 	const categoriesWithEmptyState: CategoryTypeWithEmptyArray = [
 		{ _id: "0", title: "All" },
 		...categories,
 	];
-	const [selected, setSelected] = useState<string>("All");
+
 	const titleRef = useRef<HTMLInputElement>(null);
 
 	const [
@@ -37,7 +41,7 @@ export default function Search({
 		fetchNextPage,
 		fetchPrevPage,
 		searchProducts,
-	] = useProducts(initialProducts, initialTotalPages, selected, titleRef);
+	] = useProducts(initialProducts, initialTotalProducts, selected, titleRef);
 
 	return (
 		<section id="search">
