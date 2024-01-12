@@ -4,45 +4,19 @@ import { useCallback, useRef } from "react";
 import { useState } from "react";
 import { Squash as Hamburger } from "hamburger-react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import { Button } from "./ui/button";
+import LinktreePopup from "./LinktreePopup";
 
 export const NavMobile = () => {
 	const [isOpen, setOpen] = useState<boolean>(false);
-	const ref = useRef(null);
-
-	useClickAway(ref, () => setOpen(false));
 
 	const handleOpen = useCallback((open: boolean) => {
 		setOpen(open);
 		document.body.style.overflow = open ? "hidden" : "auto";
 	}, []);
 
-	const linktree = [
-		{
-			title: "Whatsapp",
-			link: "https://wa.me/+62816500508",
-		},
-		{
-			title: "Tokopedia",
-			link: "https://tokopedia.link/jA1XuyLQBhb",
-		},
-		{
-			title: "Shopee",
-			link: "https://shopee.co.id/nuthouse?smtt=0.0.9",
-		},
-		{
-			title: "BliBli",
-			link: "https://blibli.app.link/o76vBUvb1Ab",
-		},
-	];
-
 	return (
 		<>
-			<div
-				ref={ref}
-				className="md:hidden z-10 flex items-center justify-between w-full bg-green p-3"
-			>
+			<div className="md:hidden z-10 flex items-center justify-between w-full bg-green p-3 h-[75px]">
 				<div className="w-20 relative h-10">
 					<Image alt="logo" src="/img/white-logo.png" fill />
 				</div>
@@ -56,8 +30,12 @@ export const NavMobile = () => {
 					/>
 				</div>
 				{isOpen && (
-					<div className="fixed bg-black/60 w-screen h-screen z-30 top-0 ml-[-12px]">
-						<div className="flex flex-col gap-10 items-end relative top-28 pr-8">
+					<>
+						<div
+							className="fixed bg-black/60 w-[calc(100vw+10px)] h-screen z-30 top-0 ml-[-12px]"
+							onClick={() => handleOpen(false)}
+						/>
+						<div className="flex flex-col gap-10 items-end top-28 pr-8 z-40 fixed right-0">
 							<a
 								href="#product"
 								onClick={() => handleOpen(false)}
@@ -65,27 +43,11 @@ export const NavMobile = () => {
 							>
 								CATEGORY
 							</a>
-							<Dialog>
-								<DialogTrigger>
-									<p className="text-white">CONTACT US</p>
-								</DialogTrigger>
-								<DialogContent className="rounded-lg p-10">
-									<div className="flex flex-col gap-6">
-										{linktree.map((item) => (
-											<Button
-												className="rounded-full bg-black text-white py-6"
-												key={item.title}
-											>
-												<a href={item.link} target="_blank">
-													{item.title}
-												</a>
-											</Button>
-										))}
-									</div>
-								</DialogContent>
-							</Dialog>
+							<LinktreePopup>
+								<p className="text-white">CONTACT US</p>
+							</LinktreePopup>
 						</div>
-					</div>
+					</>
 				)}
 			</div>
 		</>

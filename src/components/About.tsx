@@ -32,7 +32,10 @@ export default function About({ thumbnail }: Props) {
 		<section className="relative overflow-x-hidden" id="about">
 			<Slider {...settings}>
 				{thumbnailImages.map((image, i) => (
-					<div className={`w-full h-screen relative`} key={i}>
+					<div
+						className={`w-full md:h-[calc(100vh-95px)] h-[calc(100vh-70px)] relative`}
+						key={i}
+					>
 						<Image
 							src={image}
 							fill
@@ -53,7 +56,7 @@ export default function About({ thumbnail }: Props) {
 					Search
 				</a>
 			</div>
-			<div className="w-full h-[calc(100%-10px)] absolute bg-black/50 z-10 top-0"></div>
+			<div className="w-full md:h-[calc(100vh-99px)] h-[calc(100vh-74px)] absolute bg-black/50 z-10 top-0"></div>
 		</section>
 	);
 }
