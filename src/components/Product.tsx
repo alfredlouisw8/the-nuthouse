@@ -20,7 +20,7 @@ export default function Product({
 	const shopeeUrl = shopee || SHOPEE_URL;
 	const tokopediaUrl = tokopedia || TOKOPEDIA_URL;
 	const blibliUrl = blibli || BLIBLI_URL;
-	const priceText = price ? numberWithCommas(price) : "-";
+	const priceText = price ?? "-";
 	return (
 		<div className="flex w-full flex-col h-full items-center">
 			<Card className="max-w-[200px] border-0 drop-shadow-lg flex-1 w-full">

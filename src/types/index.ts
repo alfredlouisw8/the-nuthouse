@@ -17,7 +17,7 @@ export type ProductType = {
 	title: string;
 	image: ImageSource;
 	brand: string;
-	price: number;
+	price: string;
 	info: string;
 	shopee: string;
 	tokopedia: string;
