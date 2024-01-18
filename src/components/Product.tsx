@@ -36,7 +36,7 @@ export default function Product({
 				</CardHeader>
 				<CardContent className="py-6 px-3 flex-1 gap-3 flex flex-col">
 					<p className="line-clamp-2 h-12">{title}</p>
-					<p className="font-bold">IDR {priceText}</p>
+					<p className="font-bold">{priceText}</p>
 					<p className="text-xs">{info}</p>
 					<div className="flex items-center gap-3">
 						<a href={shopeeUrl} target="_blank">
