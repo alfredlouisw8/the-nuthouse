@@ -41,6 +41,7 @@ export const getProducts = async (
       image,
 			info,
 			brand,
+			price,
       shopee,
       tokopedia,
       blibli
