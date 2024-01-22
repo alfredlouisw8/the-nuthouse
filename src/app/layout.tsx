@@ -7,6 +7,8 @@ export const metadata: Metadata = {
 		"The Nuthouse, which operates in the food supplier industry in Surabaya, presents various kitchen needs with various choices such as categories, quantities or variants. For orders and further questions, kindly contact us.",
 };
 
+export const revalidate = 60;
+
 export default function RootLayout({
 	children,
 }: {
