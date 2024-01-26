@@ -18,6 +18,7 @@ export default function Category({ category: { image, title } }: Props) {
 							alt={title}
 							fill
 							style={{ objectFit: "cover" }}
+							className="rounded-lg"
 						/>
 					</div>
 				</CardHeader>

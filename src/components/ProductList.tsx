@@ -27,7 +27,7 @@ export default function ProductList({
 					selected != "Branded Products" && "invisible"
 				}`}
 			>
-				{products.map((product) => product.brand).join(" • ")}
+				{Array.from(new Set(products.map((product) => product.brand))).join(" • ")}
 			</p>
 			<div className="flex flex-col gap-5 min-h-[400px]">
 				{products.length > 0 ? (
