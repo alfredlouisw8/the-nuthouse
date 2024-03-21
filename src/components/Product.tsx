@@ -16,7 +16,7 @@ interface Props {
 export default function Product({
 	product: { title, image, shopee, tokopedia, blibli, info, price },
 }: Props) {
-	const imageUrl = image ? urlFor(image).url() : "/img/no-image.jpg";
+	const imageUrl = image && image.asset ? urlFor(image).url() : "/img/no-image.jpg";
 	const shopeeUrl = shopee || SHOPEE_URL;
 	const tokopediaUrl = tokopedia || TOKOPEDIA_URL;
 	const blibliUrl = blibli || BLIBLI_URL;
